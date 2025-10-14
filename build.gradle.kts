@@ -25,8 +25,11 @@ dependencies {
 
     runtimeOnly(libs.h2database.h2)
 
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.10")
+
     testImplementation(libs.spring.boot.starter.test)
-    testImplementation(libs.ninjasquad.springmocck)
+    testImplementation("io.mockk:mockk:1.13.8")
+    testImplementation("com.ninja-squad:springmockk:4.0.2")
 }
 
 tasks.withType<Test> {
