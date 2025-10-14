@@ -1,9 +1,8 @@
 package es.unizar.webeng.lab3
+import com.ninjasquad.springmockk.MockkBean
 import io.mockk.every
 import io.mockk.justRun
 import io.mockk.verify
-import java.util.Optional
-import com.ninjasquad.springmockk.MockkBean
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -15,6 +14,7 @@ import org.springframework.test.web.servlet.delete
 import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.post
 import org.springframework.test.web.servlet.put
+import java.util.Optional
 
 private val MANAGER_REQUEST_BODY = { name: String ->
     """
@@ -89,8 +89,8 @@ class ControllerTests {
         // VERIFY - COMPLETE ME!
         // Hint: What repository methods should be called for a POST operation?
         // What methods should NOT be called? Think about the difference between safe and unsafe operations.
-        verify(exactly = 2) { 
-            employeeRepository.save(any<Employee>()) 
+        verify(exactly = 2) {
+            employeeRepository.save(any<Employee>())
         }
     }
 
@@ -133,8 +133,8 @@ class ControllerTests {
         // VERIFY - COMPLETE ME!
         // Hint: Since GET is safe, what repository methods should NOT be called?
         // Count how many times each method was called based on the test requests.
-        verify(exactly = 2) { 
-            employeeRepository.findById(1) 
+        verify(exactly = 2) {
+            employeeRepository.findById(1)
         }
     }
 
@@ -187,9 +187,9 @@ class ControllerTests {
         // VERIFY - COMPLETE ME!
         // Hint: What repository methods should be called for PUT operations?
         // Think about the controller logic and how many times each method should be invoked.
-        verify(exactly = 2) { 
+        verify(exactly = 2) {
             employeeRepository.save(any<Employee>())
-            employeeRepository.findById(1) 
+            employeeRepository.findById(1)
         }
     }
 
@@ -213,10 +213,10 @@ class ControllerTests {
         // VERIFY
         // Hint: What repository methods should be called for DELETE operations?
         // What methods should NOT be called? Think about the nature of DELETE operations.
-        verify(exactly = 2) { 
+        verify(exactly = 2) {
             employeeRepository.deleteById(1)
         }
-        verify(exactly = 0) { 
+        verify(exactly = 0) {
             employeeRepository.save(any<Employee>())
             employeeRepository.findById(any())
             employeeRepository.findAll()
